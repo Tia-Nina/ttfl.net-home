@@ -1,0 +1,15 @@
+import{r as x,j as c}from"./index-DXUcqYyi.js";import{T as g,m as b,t as $,C as y}from"./shared-yxvA3eDL.js";function j(t){return t.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}function u(t){return t.replace(/`([^`]+)`/g,'<code class="rounded bg-[var(--fl-soft-bg)] px-1.5 py-0.5 font-mono text-[0.85em] text-blossom">$1</code>').replace(/!\[([^\]]*)\]\(([^)\s]+)\)/g,'<img src="$2" alt="$1" class="my-2 max-w-full rounded-xl" />').replace(/\[([^\]]+)\]\(([^)\s]+)\)/g,'<a href="$2" target="_blank" rel="noreferrer" class="text-blossom underline underline-offset-2">$1</a>').replace(/\*\*\*([^*]+)\*\*\*/g,"<strong><em>$1</em></strong>").replace(/\*\*([^*]+)\*\*/g,"<strong>$1</strong>").replace(/\*([^*]+)\*/g,"<em>$1</em>").replace(/~~([^~]+)~~/g,'<del class="opacity-60">$1</del>')}function v(t){const m=j(t).split(`
+`),e=[];let o=!1,s=null,n=[];const r=()=>{n.length&&(e.push(`<p class="my-2 leading-relaxed">${u(n.join("<br/>"))}</p>`),n=[])},a=()=>{s&&(e.push(`</${s}>`),s=null)};for(const l of m){if(l.match(/^```(\w*)/)){r(),a(),o?(e.push("</code></pre>"),o=!1):(e.push('<pre class="my-3 overflow-auto rounded-2xl bg-[var(--fl-soft-bg)] p-4 font-mono text-xs leading-relaxed"><code>'),o=!0);continue}if(o){e.push(l);continue}const d=l.match(/^(#{1,6})\s+(.*)/);if(d){r(),a();const i=["text-3xl","text-2xl","text-xl","text-lg","text-base","text-sm"][d[1].length-1];e.push(`<h${d[1].length} class="mt-5 mb-2 ${i} font-extrabold text-blossom">${u(d[2])}</h${d[1].length}>`);continue}if(/^\s*(-{3,}|\*{3,})\s*$/.test(l)){r(),a(),e.push('<hr class="my-4 border-[var(--fl-panel-border)]"/>');continue}const f=l.match(/^>\s?(.*)/);if(f){r(),a(),e.push(`<blockquote class="my-2 border-l-4 border-[var(--fl-blossom)] bg-[var(--fl-soft-bg)] px-4 py-2 italic text-muted">${u(f[1])}</blockquote>`);continue}const p=l.match(/^\s*[-*+]\s+(.*)/),h=l.match(/^\s*\d+[.)]\s+(.*)/);if(p||h){r();const i=p?"ul":"ol";s!==i&&(a(),e.push(`<${i} class="my-2 list-inside ${i==="ul"?"list-disc":"list-decimal"} space-y-1 pl-2">`),s=i),e.push(`<li>${u((p??h)[1])}</li>`);continue}if(!l.trim()){r(),a();continue}n.push(l)}return r(),a(),o&&e.push("</code></pre>"),e.join(`
+`)}function L(){const[t,m]=x.useState(`# 你好，Tia 🌸
+
+这是一个**迷你 Markdown 编辑器**，支持：
+
+- 标题、**加粗**、*斜体*、~~删除线~~
+- \`行内代码\` 和代码块
+- [链接](https://ttfl.net) 与引用
+
+> 在左边写，右边实时预览 ✨
+
+\`\`\`js
+console.log("Hello, Fairy Land!")
+\`\`\``),e=x.useMemo(()=>v(t),[t]),o=()=>{const s=new Blob([t],{type:"text/markdown"}),n=document.createElement("a");n.href=URL.createObjectURL(s),n.download="document.md",n.click(),URL.revokeObjectURL(n.href)};return c.jsxs("div",{className:"space-y-5",children:[c.jsx(g,{title:"Markdown 源码",right:c.jsx("button",{className:$,onClick:o,children:"⬇️ 导出 .md"}),children:c.jsx("textarea",{className:b+" min-h-[22rem]",value:t,onChange:s=>m(s.target.value)})}),c.jsx(g,{title:"预览",right:c.jsx(y,{text:t,label:"复制源码"}),children:c.jsx("div",{className:"min-h-32 rounded-2xl border border-[var(--fl-panel-border)] bg-base-100 p-5 text-sm",dangerouslySetInnerHTML:{__html:e}})})]})}export{L as default};
