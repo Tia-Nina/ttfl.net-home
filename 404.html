@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/img/img/avatar-pure.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="The Fairy Land - Tia's personal little universe, built with React, Tailwind CSS & daisyUI." />
+    <meta name="theme-color" content="#fdf6fb" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#171020" media="(prefers-color-scheme: dark)" />
+    <title>The Fairy Land</title>
+    <script>
+      // Restore the saved theme before the app paints to avoid a flash.
+      try {
+        var t = localStorage.getItem("theme");
+        if (t !== "light" && t !== "dark") t = "light";
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    </script>
+    <script type="module" crossorigin src="/assets/index-DXUcqYyi.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-Dfs8OiVB.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
