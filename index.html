@@ -8,6 +8,19 @@
     <meta name="theme-color" content="#fdf6fb" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#171020" media="(prefers-color-scheme: dark)" />
     <title>The Fairy Land</title>
+
+    <!-- 提前建连：首屏组件挂载后立刻要打的接口域名，省掉 DNS + TLS 往返 -->
+    <link rel="preconnect" href="https://websiteapi.ttfl.net" crossorigin />
+    <link rel="preconnect" href="https://auth.ttfl.net" crossorigin />
+    <!-- 首页 LCP 图，提前以高优先级抓取 -->
+    <link rel="preload" as="image" href="/img/img/avatar-pure.webp" fetchpriority="high" />
+
+    <style>
+      /* 样式表到达前先铺上品牌底色，避免白屏闪烁 */
+      html { background: #fdf6fb; }
+      html[data-theme="dark"] { background: #171020; }
+    </style>
+
     <script>
       // Restore the saved theme before the app paints to avoid a flash.
       try {
@@ -16,8 +29,10 @@
         document.documentElement.setAttribute("data-theme", t);
       } catch (e) {}
     </script>
-    <script type="module" crossorigin src="/assets/index-vquP3eq2.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-Cfx2HoiK.css">
+    <script type="module" crossorigin src="/assets/index-CKERYdWS.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/vendor-react-CvJpx5-9.js">
+    <link rel="modulepreload" crossorigin href="/assets/vendor-i18n-C8Ua-a95.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-cGvobXHc.css">
   </head>
   <body>
     <div id="root"></div>
